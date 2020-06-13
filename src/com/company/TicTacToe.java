@@ -3,6 +3,10 @@ package com.company;
 import java.util.Random;
 
 public class TicTacToe {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+
     private String currentPlayer = "X";
     private String[][] tttGameBoard = {
             {"| ","1"," | ","2"," | ","3"," |"},
@@ -35,9 +39,9 @@ public class TicTacToe {
 
     public String changePlayer(String player){
         if(player == "human"){
-            currentPlayer = "X";
+            currentPlayer = ANSI_RED+"X"+ANSI_RESET;
         }else{
-            currentPlayer = "O";
+            currentPlayer = ANSI_CYAN+"O"+ANSI_RESET;
         }
         return currentPlayer;
     }
