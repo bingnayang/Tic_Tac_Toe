@@ -31,15 +31,11 @@ public class Main {
                 ttt.changePlayer("human");
                 int humanPlayer = scanner.nextInt();
                 // Check if the spot is already marked
-                if (humanMarks.size() == 0) {
-                    humanMarks.add(humanPlayer);
-                }else{
-                    while (humanMarks.contains(humanPlayer) || robotMarks.contains(humanPlayer)) {
-                        System.out.println("Spot has been marked please reenter your position: ");
-                        humanPlayer = scanner.nextInt();
-                        humanMarks.add(humanPlayer);
-                    }
+                while (humanMarks.contains(humanPlayer) || robotMarks.contains(humanPlayer)) {
+                    System.out.println("Spot has been marked please reenter your position: ");
+                    humanPlayer = scanner.nextInt();
                 }
+                humanMarks.add(humanPlayer);
 
                 // Convert player position to game board position
                 ttt.convertPosition(humanPlayer);
@@ -53,15 +49,11 @@ public class Main {
                 ttt.changePlayer("cpu");
                 int robotPlayer = scanner.nextInt();
                 // Check if the spot is already marked
-//                if(robotMarks.size() > 0){
-//                    while(robotMarks.contains(robotPlayer) || humanMarks.contains(robotPlayer)){
-//                        System.out.println("Spot has been marked please reenter your position: ");
-//                        robotPlayer = scanner.nextInt();
-//                        robotMarks.add(robotPlayer);
-//                    }
-//                }else {
-//                    robotMarks.add(robotPlayer);
-//                }
+                while (robotMarks.contains(robotPlayer) || humanMarks.contains(robotPlayer)) {
+                    System.out.println("Spot has been marked please reenter your position: ");
+                    robotPlayer = scanner.nextInt();
+                }
+                robotMarks.add(robotPlayer);
                 // Convert player position to game board position
                 ttt.convertPosition(robotPlayer);
                 ttt.printGameBoard();
