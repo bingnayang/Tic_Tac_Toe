@@ -17,6 +17,7 @@ public class Main {
 
         TicTacToe ttt = new TicTacToe();
         ttt.printGameBoard();
+        ttt.printWinningList();
 
         System.out.println("Enter Starting PLayer (1 for Human or 2 for Robot): ");
         int startingPlayer = scanner.nextInt();
@@ -47,17 +48,18 @@ public class Main {
             } else {
                 System.out.print("Robot position " + ANSI_CYAN + "[O]: " + ANSI_RESET);
                 ttt.changePlayer("cpu");
-                int robotPlayer = scanner.nextInt();
+                int robotPlayer = ttt.cpuPosition();
                 // Check if the spot is already marked
                 while (robotMarks.contains(robotPlayer) || humanMarks.contains(robotPlayer)) {
                     System.out.println("Spot has been marked please reenter your position: ");
-                    robotPlayer = scanner.nextInt();
+                    robotPlayer = ttt.cpuPosition();
                 }
                 robotMarks.add(robotPlayer);
                 // Convert player position to game board position
                 ttt.convertPosition(robotPlayer);
                 ttt.printGameBoard();
                 // For testing
+                System.out.println("RobotMarks size(): "+robotMarks.size());
                 System.out.println("Robot player marks position: " + robotMarks.toString());
                 setPlayer = true;
             }

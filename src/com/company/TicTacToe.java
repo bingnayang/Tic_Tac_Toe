@@ -1,11 +1,14 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class TicTacToe {
-//    {{1,2,3},{4,5,6},{7,8,9},{1,5,9},{3,5,7}};
+//    {{1,2,3},{4,5,6},{7,8,9},{1,4,7},{2,5,8},{3,6,9},{1,5,9},{3,5,7}};
+//    ArrayList<ArrayList<Integer>> winningSet = new ArrayList<ArrayList<Integer>>();
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -20,6 +23,7 @@ public class TicTacToe {
             {"| ","7"," | ","8"," | ","9"," |"}};
 
     public void printGameBoard(){
+        System.out.println();
         System.out.println("+---+---+---+");
         for(String[] row: tttGameBoard){
             for(String col : row){
@@ -30,6 +34,27 @@ public class TicTacToe {
         System.out.println("+---+---+---+");
         System.out.println();
     }
+
+    public List addWinningSet () {
+        ArrayList<ArrayList<Integer>> winningSet = new ArrayList<ArrayList<Integer>>();
+
+        winningSet.add(new ArrayList<>(Arrays.asList(1,2,3)));
+        winningSet.add(new ArrayList<>(Arrays.asList(4,5,6)));
+        winningSet.add(new ArrayList<>(Arrays.asList(7,8,9)));
+
+        winningSet.add(new ArrayList<>(Arrays.asList(1,4,7)));
+        winningSet.add(new ArrayList<>(Arrays.asList(2,5,8)));
+        winningSet.add(new ArrayList<>(Arrays.asList(3,6,9)));
+
+        winningSet.add(new ArrayList<>(Arrays.asList(1,5,9)));
+        winningSet.add(new ArrayList<>(Arrays.asList(3,5,7)));
+
+        return winningSet;
+    }
+    public void printWinningList(){
+        System.out.println(addWinningSet());
+    }
+
     public boolean placeMark(int row, int col){
         tttGameBoard[row][col] = currentPlayer;
         return true;
