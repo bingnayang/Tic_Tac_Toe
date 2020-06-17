@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Random;
 
 public class TicTacToe {
-//    {{1,2,3},{4,5,6},{7,8,9},{1,4,7},{2,5,8},{3,6,9},{1,5,9},{3,5,7}};
-//    ArrayList<ArrayList<Integer>> winningSet = new ArrayList<ArrayList<Integer>>();
+
+    List<ArrayList<Integer>> winningSet = new ArrayList<ArrayList<Integer>>();
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -36,7 +36,7 @@ public class TicTacToe {
     }
 
     public List addWinningSet () {
-        ArrayList<ArrayList<Integer>> winningSet = new ArrayList<ArrayList<Integer>>();
+
 
         winningSet.add(new ArrayList<>(Arrays.asList(1,2,3)));
         winningSet.add(new ArrayList<>(Arrays.asList(4,5,6)));
@@ -105,6 +105,14 @@ public class TicTacToe {
                 break;
         }
 
+    }
+    public String checkMatchWinner(List playerPositions){
+        for(List list : winningSet){
+            if(playerPositions.contains(list)){
+                return "You Win";
+            }
+        }
+        return "";
     }
 
 }

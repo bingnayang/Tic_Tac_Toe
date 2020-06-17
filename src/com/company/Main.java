@@ -37,6 +37,7 @@ public class Main {
                     humanPlayer = scanner.nextInt();
                 }
                 humanMarks.add(humanPlayer);
+                ttt.checkMatchWinner(humanMarks);
 
                 // Convert player position to game board position
                 ttt.convertPosition(humanPlayer);
